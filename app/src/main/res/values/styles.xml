@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="iconStyle" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">#A928C6</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="tint">@color/black</item>
+        <item name="colorSecondary">#FE7700</item>
+        <item name="colorSecondaryVariant">#0154FA</item>
+        <item name="colorOnSecondary">@color/black</item>
+    </style>
+
+    <style name="txt" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="btn" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#0E3902</item>
+    </style>
+
+    <style name="triviaApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="tint">@color/black</item>
+    </style>
+
+
+
+</resources>
