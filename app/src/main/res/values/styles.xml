@@ -18,8 +18,14 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+
+
     <style name="btn" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">#0E3902</item>
+        <item name="colorPrimary">#061B01</item>
+    </style>
+
+    <style name="btn1" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#010837</item>
     </style>
 
     <style name="triviaApp" parent="Theme.Material3.DayNight.NoActionBar">

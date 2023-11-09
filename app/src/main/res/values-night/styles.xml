@@ -18,8 +18,12 @@
     </style>
 
     <style name="btn" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">#FFFFFF</item>
     </style>
+    <style name="btn1" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#FFFFFF</item>
+    </style>
+
 
 
     <style name="triviaApp" parent="Theme.Material3.DayNight.NoActionBar">

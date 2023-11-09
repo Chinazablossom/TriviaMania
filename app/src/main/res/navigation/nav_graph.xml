@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/starter_Frg2"
-        android:name="com.example.triviamania.Screens.Starter_Frg"
+        android:name="com.example.triviamania.ui.Fragments.Starter_Frg"
         android:label="fragment_starter__frg"
         tools:layout="@layout/fragment_starter__frg" >
         <action
@@ -17,52 +17,59 @@
 
     <fragment
         android:id="@+id/game_Fragment"
-        android:name="com.example.triviamania.Screens.AndroidGame_Fragment"
+        android:name="com.example.triviamania.ui.Fragments.AndroidGameFragment"
         android:label="fragment_game_"
         tools:layout="@layout/fragment_androidgame_" >
         <action
-            android:id="@+id/action_game_Fragment_to_winnerFragment2"
-            app:destination="@id/winnerFragment" />
-        <action
-            android:id="@+id/action_game_Fragment_to_trryAgainFragment"
-            app:destination="@id/trryAgainFragment" />
+            android:id="@+id/action_game_Fragment_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
 
     </fragment>
 
 
     <fragment
-        android:id="@+id/winnerFragment"
-        android:name="com.example.triviamania.Screens.WinnerFragment"
-        android:label="fragment_winner"
-        tools:layout="@layout/fragment_winner" />
-    <fragment
-        android:id="@+id/trryAgainFragment"
-        android:name="com.example.triviamania.Screens.TrryAgainFragment"
-        android:label="fragment_trry_again"
-        tools:layout="@layout/fragment_trry_again" />
-
-    <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.example.triviamania.Screens.categoriesFragment"
+        android:name="com.example.triviamania.ui.Fragments.categoriesFragment"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" >
         <action
             android:id="@+id/action_categoriesFragment_to_levelsFragment"
             app:destination="@id/android_levelsFragment"
             />
+        <action
+            android:id="@+id/action_categoriesFragment_to_scienceLevelFragment"
+            app:destination="@id/scienceLevelFragment" />
     </fragment>
 
 
     <fragment
         android:id="@+id/android_levelsFragment"
-        android:name="com.example.triviamania.Screens.Android_LevelsFragment"
+        android:name="com.example.triviamania.ui.Fragments.Android_LevelsFragment"
         android:label="fragment_levels"
         tools:layout="@layout/fragmentandroid_levels" >
         <action
             android:id="@+id/action_android_levelsFragment_to_game_Fragment"
             app:destination="@id/game_Fragment" />
     </fragment>
-
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.example.triviamania.ResultsFragment"
+        android:label="fragment_results"
+        tools:layout="@layout/fragment_results" />
+    <fragment
+        android:id="@+id/scienceLevelFragment"
+        android:name="com.example.triviamania.ScienceLevelFragment"
+        android:label="fragment_science_level"
+        tools:layout="@layout/fragment_science_level" >
+        <action
+            android:id="@+id/action_scienceLevelFragment_to_scienceGameFragment"
+            app:destination="@id/scienceGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scienceGameFragment"
+        android:name="com.example.triviamania.ScienceGameFragment"
+        android:label="fragment_science_game"
+        tools:layout="@layout/fragment_science_game" />
 
 
 </navigation>

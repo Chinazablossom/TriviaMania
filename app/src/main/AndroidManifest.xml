@@ -14,14 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TriviaMania"
         tools:targetApi="31">
+
         <activity
-            android:name=".fight_Screen"
-            android:exported="false"
-            android:label="@string/title_activity_fight_screen"
-            android:theme="@style/Theme.TriviaMania" />
-        <activity
-            android:name=".Screens.splash_screen"
-            android:exported="true">
+            android:name=".ui.Splashscreen"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +27,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Screens.MainActivity"
-            android:exported="true">
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
