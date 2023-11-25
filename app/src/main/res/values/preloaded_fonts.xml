@@ -4,5 +4,6 @@
         <item>@font/heebo_black</item>
         <item>@font/heebo_extrabold</item>
         <item>@font/heebo_medium</item>
+        <item>@font/inter</item>
     </array>
 </resources>

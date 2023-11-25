@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/starter_Frg2"
-        android:name="com.example.triviamania.ui.Fragments.Starter_Frg"
+        android:name="com.example.triviamania.ui.screens.StarterFrg"
         android:label="fragment_starter__frg"
         tools:layout="@layout/fragment_starter__frg" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/game_Fragment"
-        android:name="com.example.triviamania.ui.Fragments.AndroidGameFragment"
+        android:name="com.example.triviamania.ui.screens.AndroidGameFragment"
         android:label="fragment_game_"
         tools:layout="@layout/fragment_androidgame_" >
         <action
@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.example.triviamania.ui.Fragments.categoriesFragment"
+        android:name="com.example.triviamania.ui.screens.CategoriesFragment"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" >
         <action
@@ -39,12 +39,30 @@
         <action
             android:id="@+id/action_categoriesFragment_to_scienceLevelFragment"
             app:destination="@id/scienceLevelFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_mathsFragment"
+            app:destination="@id/mathsFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_computerScienceFragment"
+            app:destination="@id/computerScienceFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_entertainmentFragment"
+            app:destination="@id/entertainmentFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_entertainmentFragment2"
+            app:destination="@id/entertainmentFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_historyFragment2"
+            app:destination="@id/historyFragment" />
     </fragment>
 
 
     <fragment
         android:id="@+id/android_levelsFragment"
-        android:name="com.example.triviamania.ui.Fragments.Android_LevelsFragment"
+        android:name="com.example.triviamania.ui.screens.Android_LevelsFragment"
         android:label="fragment_levels"
         tools:layout="@layout/fragmentandroid_levels" >
         <action
@@ -53,12 +71,12 @@
     </fragment>
     <fragment
         android:id="@+id/resultsFragment"
-        android:name="com.example.triviamania.ResultsFragment"
+        android:name="com.example.triviamania.ui.screens.ResultsFragment"
         android:label="fragment_results"
         tools:layout="@layout/fragment_results" />
     <fragment
         android:id="@+id/scienceLevelFragment"
-        android:name="com.example.triviamania.ScienceLevelFragment"
+        android:name="com.example.triviamania.ui.screens.ScienceLevelFragment"
         android:label="fragment_science_level"
         tools:layout="@layout/fragment_science_level" >
         <action
@@ -67,9 +85,85 @@
     </fragment>
     <fragment
         android:id="@+id/scienceGameFragment"
-        android:name="com.example.triviamania.ScienceGameFragment"
+        android:name="com.example.triviamania.ui.screens.ScienceGameFragment"
         android:label="fragment_science_game"
-        tools:layout="@layout/fragment_science_game" />
+        tools:layout="@layout/fragment_science_game" >
+        <action
+            android:id="@+id/action_scienceGameFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mathsFragment"
+        android:name="com.example.triviamania.ui.screens.MathsFragment"
+        android:label="fragment_maths"
+        tools:layout="@layout/fragment_maths_level" >
+        <action
+            android:id="@+id/action_mathsFragment_to_mathGameFragment"
+            app:destination="@id/mathGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/computerScienceFragment"
+        android:name="com.example.triviamania.ui.screens.ComputerScienceFragment"
+        android:label="fragment_computer_science"
+        tools:layout="@layout/fragment_computer_science" >
+        <action
+            android:id="@+id/action_computerScienceFragment_to_comuterScienceGameFragment"
+            app:destination="@id/comuterScienceGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/entertainmentFragment"
+        android:name="com.example.triviamania.ui.screens.EntertainmentFragment"
+        android:label="fragment_entertainment"
+        tools:layout="@layout/fragment_entertainment" >
+        <action
+            android:id="@+id/action_entertainmentFragment_to_entertainmentGameFragment"
+            app:destination="@id/entertainmentGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mathGameFragment"
+        android:name="com.example.triviamania.ui.screens.MathGameFragment"
+        android:label="fragment_math_game"
+        tools:layout="@layout/fragment_math_game" >
+        <action
+            android:id="@+id/action_mathGameFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.triviamania.ui.screens.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_historyGameFragment"
+            app:destination="@id/historyGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/comuterScienceGameFragment"
+        android:name="com.example.triviamania.ui.screens.ComputerScienceGameFragment"
+        android:label="fragment_comuter_science_game"
+        tools:layout="@layout/fragment_comuter_science_game" >
+        <action
+            android:id="@+id/action_comuterScienceGameFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/entertainmentGameFragment"
+        android:name="com.example.triviamania.ui.screens.EntertainmentGameFragment"
+        android:label="fragment_entertainment_game"
+        tools:layout="@layout/fragment_entertainment_game" >
+        <action
+            android:id="@+id/action_entertainmentGameFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyGameFragment"
+        android:name="com.example.triviamania.ui.screens.HistoryGameFragment"
+        android:label="fragment_history_game"
+        tools:layout="@layout/fragment_history_game" >
+        <action
+            android:id="@+id/action_historyGameFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
+    </fragment>
 
 
 </navigation>

@@ -6,29 +6,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context=".ui.Fragments.AndroidGameFragment"
+    android:background="#C8F384"
+    tools:context=".ui.screens.AndroidGameFragment"
     >
 
-    <View
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/view2"
         android:layout_width="match_parent"
-        android:layout_height="138dp"
-        android:background="@drawable/upbckground"
-        android:backgroundTint="#C3000000"
+        android:layout_height="250dp"
+        app:lottie_rawRes="@raw/androidtop"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:background="@drawable/upbckground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ScrollView
@@ -37,13 +30,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-    >
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
+            android:layout_gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -93,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="#061B01"
+                android:backgroundTint="#032701"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -139,13 +132,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_opt"
+                    android:fontFamily="@font/inter"
                     android:text=""
-                    android:theme="@style/txt"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
 
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/option2"
@@ -180,6 +173,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/btn_opt"
                     android:text=""
+                    android:layout_marginBottom="4dp"
                     android:theme="@style/txt"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -208,8 +202,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="#059705"
+                android:backgroundTint="#032701"
                 android:text="Next"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/optContainer" />

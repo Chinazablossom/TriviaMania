@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#9584F3"
-    tools:context=".ui.Fragments.Android_LevelsFragment">
+    tools:context=".ui.screens.Android_LevelsFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

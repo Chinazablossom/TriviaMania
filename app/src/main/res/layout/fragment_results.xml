@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultsFragment">
+    android:background="#9584F3"
+    tools:context=".ui.screens.ResultsFragment">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -64,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="#7E6CE1"
+                android:backgroundTint="#FFFFFF"
                 app:cardCornerRadius="30dp"
                 android:padding="16dp">
 
