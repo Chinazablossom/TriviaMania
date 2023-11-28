@@ -1,5 +1,6 @@
 package com.example.triviamania.ui.screens
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,9 +19,8 @@ import com.example.triviamania.databinding.FragmentEntertainmentBinding
 class EntertainmentFragment : Fragment() {
 
     lateinit var binding: FragmentEntertainmentBinding
-
     private var isNotExpanded = false
-
+    var mediaPlayer: MediaPlayer? = null
     private lateinit var easylist:MutableList<StagesModel>
     private lateinit var mediumlist:MutableList<StagesModel>
     private lateinit var hardlist:MutableList<StagesModel>
@@ -45,6 +45,8 @@ class EntertainmentFragment : Fragment() {
             vhardRV.layoutManager = LinearLayoutManager(requireContext())
 
             backImg.setOnClickListener {
+                mediaPlayer = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayer?.start()
                 findNavController().popBackStack(R.id.categoriesFragment,false)
             }
 
@@ -64,12 +66,12 @@ class EntertainmentFragment : Fragment() {
                 vhardlist.add(StagesModel("Stage $it"))
             }
 
-            val easyadapter = StagesAdapter(requireContext(),easylist, R.id.entertainmentFragment)
+            val easyadapter = StagesAdapter(requireContext(),easylist, R.id.entertainmentGameFragment)
             val mediumadapter = StagesAdapter(requireContext(),mediumlist,
-                R.id.entertainmentFragment
+                R.id.entertainmentGameFragment
             )
-            val hardadapter = StagesAdapter(requireContext(),hardlist, R.id.entertainmentFragment)
-            val vhardadapter = StagesAdapter(requireContext(),vhardlist, R.id.entertainmentFragment)
+            val hardadapter = StagesAdapter(requireContext(),hardlist, R.id.entertainmentGameFragment)
+            val vhardadapter = StagesAdapter(requireContext(),vhardlist, R.id.entertainmentGameFragment)
 
             easystagesRV.adapter = easyadapter
             mediumstagesRV.adapter = mediumadapter
@@ -79,15 +81,23 @@ class EntertainmentFragment : Fragment() {
 
 
             easyLL.setOnClickListener {
+                mediaPlayer = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayer?.start()
                 toggle(stageeasyViewImgId,easystagesRV)
             }
             mediumLL.setOnClickListener{
+                mediaPlayer = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayer?.start()
                 toggle(stgsMediumIV,mediumstagesRV)
             }
             hardLL.setOnClickListener{
+                mediaPlayer = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayer?.start()
                 toggle(stgsHardIV,hardRV)
             }
             vhardLL.setOnClickListener{
+                mediaPlayer = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayer?.start()
                 toggle(stgsvhardIV,vhardRV)
             }
 

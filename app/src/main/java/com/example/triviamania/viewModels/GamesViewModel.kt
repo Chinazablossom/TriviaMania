@@ -15,6 +15,9 @@ class GamesViewModel:ViewModel (){
     private var _position = MutableLiveData(0)
     val position: LiveData<Int> get() = _position
     private val _currentTimeLeft = MutableLiveData(30L)
+    private var _skipped = MutableLiveData(0)
+    val skipped: LiveData<Int> get() = _skipped
+
     val currentTimeLeft: LiveData<Long> get() = _currentTimeLeft
     private var timer: CountDownTimer? = null
     private val _isGameOver = MutableLiveData(false)
@@ -45,9 +48,34 @@ class GamesViewModel:ViewModel (){
         startTimer()
     }
 
+    fun playTimer() {
+        timer = object : CountDownTimer(_currentTimeLeft.value!! * 1000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                _currentTimeLeft.value = millisUntilFinished / 1000
+            }
+
+            override fun onFinish() {
+                _isGameOver.value = true
+            }
+        }
+        timer?.start()
+        _isGameOver.value = false
+    }
+
     fun increasePosition() {
         _position.value = (_position.value)?.plus(1)
     }
+
+
+    fun skipQuestion() {
+        val currentPosition = _position.value ?: 0
+        if (currentPosition < questionsList.size) {
+            increasePosition()
+
+            _skipped.value = (_skipped.value)?.plus(1)
+        }
+    }
+
 
     private fun increaseScore() {
         _score.value = (_score.value)?.plus(1)

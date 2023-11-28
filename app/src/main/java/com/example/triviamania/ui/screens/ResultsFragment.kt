@@ -1,9 +1,11 @@
 package com.example.triviamania.ui.screens
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.triviamania.R
@@ -12,6 +14,8 @@ import com.example.triviamania.databinding.FragmentResultsBinding
 
 class ResultsFragment : Fragment() {
     lateinit var binding: FragmentResultsBinding
+    private var mediaPlayer: MediaPlayer? = null
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -23,38 +27,41 @@ class ResultsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mediaPlayer = MediaPlayer.create(requireContext(),R.raw.yay)
+        mediaPlayer?.start()
 
-        val animations = arrayOf(
-            R.raw.android_winner, R.raw.science_result,
-            R.raw.math_result, R.raw.cs_result, R.raw.entertainment_result, R.raw.history_result,
-            R.raw.geography_result, R.raw.sport_result
-            )
+
+
 
 
         binding.apply {
 
 
-            val totalScore = arguments?.getInt("total")
+            val totalQuest = arguments?.getInt("total")
             val correctAnswers = arguments?.getInt("result")
-            val wrong =  correctAnswers?.let { totalScore?.minus(it) }
-            val anim = arguments?.getInt("anim")
+            val skipped = arguments?.getInt("skipped")
+            val wrong = skipped?.let { (correctAnswers?.let { totalQuest?.minus(it) })?.minus(it) }
 
-            if (anim != null) {
-                lottieAnimationView4.setAnimation(anim)
-                lottieAnimationView4.playAnimation()
-                lottieAnimationView4.loop(true)
-            }
 
-            totalQuestions.text = totalScore.toString()
+            totalQuestions.text = totalQuest.toString()
             rightAnswers.text = correctAnswers.toString()
             wrongAnswers.text = wrong.toString()
+            skippedTxt.text = skipped.toString()
+
 
             retrybtn.setOnClickListener{
                 findNavController().navigate(R.id.android_levelsFragment)
             }
-            binding.quitbtn.setOnClickListener{
+
+            quitbtn.setOnClickListener{
                 findNavController().popBackStack(R.id.categoriesFragment,false)
             }
+
+            requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+                findNavController().popBackStack(R.id.categoriesFragment,false)
+            }
+
+
         }
 
     }

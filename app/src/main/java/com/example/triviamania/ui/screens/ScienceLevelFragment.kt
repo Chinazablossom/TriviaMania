@@ -1,5 +1,6 @@
 package com.example.triviamania.ui.screens
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,10 +17,10 @@ import com.example.triviamania.databinding.FragmentScienceLevelBinding
 
 
 class ScienceLevelFragment : Fragment() {
+
     lateinit var binding: FragmentScienceLevelBinding
-
     private var isNotExpanded = false
-
+    var mediaPlayer: MediaPlayer? = null
     private lateinit var easylist:MutableList<StagesModel>
     private lateinit var mediumlist:MutableList<StagesModel>
     private lateinit var hardlist:MutableList<StagesModel>
@@ -29,7 +30,6 @@ class ScienceLevelFragment : Fragment() {
         binding = FragmentScienceLevelBinding.inflate(inflater,container,false)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,6 +45,8 @@ class ScienceLevelFragment : Fragment() {
             vhardRV.layoutManager = LinearLayoutManager(requireContext())
 
             backImg.setOnClickListener {
+                mediaPlayer = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayer?.start()
                 findNavController().popBackStack(R.id.categoriesFragment,false)
             }
 
@@ -77,15 +79,23 @@ class ScienceLevelFragment : Fragment() {
 
 
             easyLL.setOnClickListener {
+                mediaPlayer = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayer?.start()
                 toggle(stageeasyViewImgId,easystagesRV)
             }
             mediumLL.setOnClickListener{
+                mediaPlayer = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayer?.start()
                 toggle(stgsMediumIV,mediumstagesRV)
             }
             hardLL.setOnClickListener{
+                mediaPlayer = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayer?.start()
                 toggle(stgsHardIV,hardRV)
             }
             vhardLL.setOnClickListener{
+                mediaPlayer = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayer?.start()
                 toggle(stgsvhardIV,vhardRV)
             }
 
@@ -93,7 +103,6 @@ class ScienceLevelFragment : Fragment() {
 
 
     }
-
 
     private fun toggle(image: ImageView, rview: RecyclerView) {
         if (isNotExpanded) {

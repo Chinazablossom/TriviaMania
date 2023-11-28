@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,18 +13,25 @@ import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
 import com.example.triviamania.R
 import com.example.triviamania.databinding.FragmentEntertainmentGameBinding
+import com.example.triviamania.viewModels.GameSoundViewModel
 import com.example.triviamania.viewModels.GamesViewModel
+import com.example.triviamania.viewModels.SoundViewModel
 
 class EntertainmentGameFragment : Fragment() {
     private val entertainmentGameViewModel: GamesViewModel by viewModels()
-
+    private val soundViewModel: SoundViewModel by activityViewModels()
+    private val gameSoundViewModel: GameSoundViewModel by activityViewModels()
+    private var mediaPlayer: MediaPlayer? = null
+    private var mediaPlayerClick: MediaPlayer? = null
     private lateinit var binding: FragmentEntertainmentGameBinding
     private var count = 0
     private var currentPosition = 0
@@ -39,6 +47,8 @@ class EntertainmentGameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            soundViewModel.setSoundOn(false)
+            gameSoundViewModel.setSoundOn(true)
 
             entertainmentGameViewModel.position.observe(viewLifecycleOwner) {
                 currentPosition = it
@@ -133,7 +143,54 @@ class EntertainmentGameFragment : Fragment() {
                 0,
                 entertainmentGameViewModel.questionsList[currentPosition].question
             )
+
+            skipBtn.setOnClickListener {
+                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick?.start()
+
+                entertainmentGameViewModel.skipQuestion()
+
+                if (savedInstanceState == null) {
+                    entertainmentGameViewModel.resetTimer()
+                    view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
+
+                }
+
+                entertainmentGameViewModel.resetTimer()
+                counterTv.setTextColor(Color.BLACK)
+                view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.playAnimation()
+
+                btnNext.isEnabled = false
+                btnNext.alpha = 0.3f
+                enableOption(true)
+
+
+                if (currentPosition >= entertainmentGameViewModel.questionsList.size) {
+                    gameSoundViewModel.setSoundOn(false)
+                    soundViewModel.setSoundOn(true)
+
+                    findNavController().navigate(
+                        R.id.resultsFragment,
+                        bundleOf(
+                            "result" to entertainmentGameViewModel.score.value,
+                            "total" to entertainmentGameViewModel.questionsList.size,
+                            "skipped" to entertainmentGameViewModel.skipped.value
+
+                        )
+                    )
+                    return@setOnClickListener
+                }
+                count = 0
+                playAnimation(QuestionTv, 0, entertainmentGameViewModel.questionsList[currentPosition].question)
+
+            }
+
+
+
             btnNext.setOnClickListener {
+                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick?.start()
+
                 if (savedInstanceState == null) {
                     entertainmentGameViewModel.resetTimer()
                     view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)
@@ -151,13 +208,15 @@ class EntertainmentGameFragment : Fragment() {
                 entertainmentGameViewModel.increasePosition()
 
                 if (currentPosition == entertainmentGameViewModel.questionsList.size) {
+                    gameSoundViewModel.setSoundOn(false)
+                    soundViewModel.setSoundOn(true)
+
                     findNavController().navigate(
                         R.id.resultsFragment,
                         bundleOf(
                             "result" to entertainmentGameViewModel.score.value,
                             "total" to entertainmentGameViewModel.questionsList.size,
-                            "anim" to R.raw.entertainment_result
-                        )
+                            "skipped" to entertainmentGameViewModel.skipped.value                        )
                     )
 
                     return@setOnClickListener
@@ -169,8 +228,12 @@ class EntertainmentGameFragment : Fragment() {
                     entertainmentGameViewModel.questionsList[currentPosition].question
                 )
             }
-
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            showQuitDialog()
+        }
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -182,12 +245,14 @@ class EntertainmentGameFragment : Fragment() {
         for (i in 0..3) {
             binding.optContainer.getChildAt(i).isEnabled = b
             if (b) {
-                binding.optContainer.getChildAt(i).setBackgroundResource(R.drawable.btn_opts)
+                binding.optContainer.getChildAt(i).setBackgroundResource(R.drawable.btn_opt)
             }
         }
     }
 
     private fun showTimeUpDialog() {
+        view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
+
         val dialog = Dialog(requireContext())
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window?.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
@@ -195,9 +260,47 @@ class EntertainmentGameFragment : Fragment() {
         dialog.setContentView(R.layout.timeup_dialogue)
 
         dialog.findViewById<View>(R.id.tryAgainbtn).setOnClickListener {
-            findNavController().popBackStack(R.id.android_levelsFragment, false)
+            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick?.start()
+            gameSoundViewModel.setSoundOn(false)
+            soundViewModel.setSoundOn(true)
+
+            findNavController().popBackStack(R.id.entertainmentFragment, false)
             dialog.dismiss()
         }
+        dialog.show()
+    }
+
+    private fun showQuitDialog() {
+        entertainmentGameViewModel.stopTimer()
+        view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
+
+        val dialog = Dialog(requireContext())
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.quit_dialogue)
+
+        dialog.findViewById<View>(R.id.yesbtn).setOnClickListener {
+            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick?.start()
+
+            findNavController().popBackStack(R.id.entertainmentFragment, false)
+            gameSoundViewModel.setSoundOn(false)
+            soundViewModel.setSoundOn(true)
+            dialog.dismiss()
+        }
+
+        dialog.findViewById<View>(R.id.nobtn).setOnClickListener{
+            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick?.start()
+
+            dialog.dismiss()
+            entertainmentGameViewModel.playTimer()
+            view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.playAnimation()
+
+        }
+
         dialog.show()
     }
 
@@ -250,8 +353,14 @@ class EntertainmentGameFragment : Fragment() {
         binding.btnNext.isEnabled = true
         binding.btnNext.alpha = 1f
         if (entertainmentGameViewModel.checkAnswer(selectedOption.text.toString())) {
+            mediaPlayer = MediaPlayer.create(requireContext(),R.raw.correct_answer_sound_effects)
+            mediaPlayer?.start()
+
             selectedOption.setBackgroundResource(R.drawable.correct)
         } else {
+            mediaPlayer = MediaPlayer.create(requireContext(),R.raw.wrong_answer_sound)
+            mediaPlayer?.start()
+
             selectedOption.setBackgroundResource(R.drawable.wrong)
             val correctOption =
                 binding.optContainer.findViewWithTag(entertainmentGameViewModel.questionsList[currentPosition].correctAnswer) as Button

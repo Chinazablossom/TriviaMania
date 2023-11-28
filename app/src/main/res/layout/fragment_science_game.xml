@@ -23,10 +23,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
+            android:layout_gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -47,35 +48,40 @@
                 android:id="@+id/lottieAnimationView2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/timer" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/counterTv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="3dp"
+                android:background="@drawable/btn_opt"
+                android:backgroundTint="#F2F1EDF8"
+                android:fontFamily="@font/baloo"
+                android:padding="8dp"
                 android:text=""
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="16sp"
                 android:theme="@style/txt"
                 app:layout_constraintBottom_toBottomOf="@+id/lottieAnimationView2"
                 app:layout_constraintStart_toEndOf="@+id/lottieAnimationView2"
-                app:layout_constraintTop_toTopOf="@+id/lottieAnimationView2" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/numOfqTv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_opt"
+                android:backgroundTint="#F2F4F2F6"
+                android:fontFamily="@font/baloo"
+                android:padding="8dp"
                 android:text=""
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="16sp"
                 android:theme="@style/txt"
-                app:layout_constraintBottom_toBottomOf="@+id/lottieAnimationView2"
+                app:layout_constraintBottom_toBottomOf="@+id/counterTv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -101,8 +107,8 @@
                         android:id="@+id/QuestionTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-black"
-                        android:text="How many Science Questions Can You Answer?"
+                        android:text="How many Android Questions Can You Answer?"
+                        android:fontFamily="@font/fredoka_one"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="20sp"
@@ -120,7 +126,8 @@
                 android:id="@+id/optContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginBottom="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/crd">
@@ -134,18 +141,18 @@
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-
-                    />
+                    android:fontFamily="@font/fredoka_one"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/option2"
                     android:layout_width="match_parent"
+                    android:fontFamily="@font/fredoka_one"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/btn_opt"
                     android:text=""
-                    android:textColor="@color/black"
+                    android:theme="@style/txt"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/option1"
@@ -155,11 +162,12 @@
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/option3"
                     android:layout_width="match_parent"
+                    android:fontFamily="@font/fredoka_one"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/btn_opt"
                     android:text=""
-                    android:textColor="@color/black"
+                    android:theme="@style/txt"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/option2" />
@@ -170,8 +178,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/btn_opt"
+                    android:fontFamily="@font/fredoka_one"
                     android:text=""
-                    android:textColor="@color/black"
+                    android:layout_marginBottom="4dp"
+                    android:theme="@style/txt"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -186,18 +196,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="Skip"
+                android:fontFamily="@font/fredoka_one"
                 android:textSize="20sp"
-                android:theme="@style/btn1"
+                android:theme="@style/btn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/optContainer"
-                app:strokeColor="#020B43"
+                app:strokeColor="#212C01"
                 app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/btnNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/fredoka_one"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="#6E61E1"
                 android:text="Next"

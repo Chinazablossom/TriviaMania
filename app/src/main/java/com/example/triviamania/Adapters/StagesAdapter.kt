@@ -1,6 +1,7 @@
 package com.example.triviamania.Adapters
 
 import android.content.Context
+import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,8 @@ class StagesAdapter(
     val destination: Int
     ): RecyclerView.Adapter<StagesAdapter.ViewHolder>() {
 
+    var mediaPlayer: MediaPlayer? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.items_rv, parent, false)
         return ViewHolder(view)
@@ -27,6 +30,8 @@ class StagesAdapter(
         holder.binding.stagesNumbers.text = model.stageName
         val bundle = bundleOf("Key" to model.stageName)
         holder.itemView.setOnClickListener {
+            mediaPlayer = MediaPlayer.create(context,R.raw.mouse_click_sound_effect)
+            mediaPlayer?.start()
             it.findNavController().navigate(destination, bundle)
         }
     }

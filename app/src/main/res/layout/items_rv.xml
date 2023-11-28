@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:padding="10dp"
     >
 
 
@@ -12,11 +12,10 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="15dp"
         android:elevation="3dp"
-        android:backgroundTint ="#F2F5FB"
+        android:backgroundTint ="#D7DCE4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -41,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:fontFamily="@font/heebo_extrabold"
+                android:fontFamily="@font/baloo"
                 android:text="Stage 1"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -49,10 +48,7 @@
                 app:layout_constraintStart_toEndOf="@+id/levelIcon"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.cardview.widget.CardView>
 
 

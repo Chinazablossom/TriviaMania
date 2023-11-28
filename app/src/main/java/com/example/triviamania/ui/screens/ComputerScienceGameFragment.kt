@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,17 +14,24 @@ import android.view.WindowManager
 import android.view.animation.DecelerateInterpolator
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.core.os.bundleOf
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.airbnb.lottie.LottieAnimationView
 import com.example.triviamania.R
 import com.example.triviamania.databinding.FragmentComuterScienceGameBinding
+import com.example.triviamania.viewModels.GameSoundViewModel
 import com.example.triviamania.viewModels.GameViewModel
+import com.example.triviamania.viewModels.SoundViewModel
 
 class ComputerScienceGameFragment : Fragment() {
     private val csGameViewModel: GameViewModel by viewModels()
-
+    private val soundViewModel: SoundViewModel by activityViewModels()
+    private val gameSoundViewModel: GameSoundViewModel by activityViewModels()
+    private var mediaPlayer: MediaPlayer? = null
+    private var mediaPlayerClick: MediaPlayer? = null
     private lateinit var binding: FragmentComuterScienceGameBinding
     private var count = 0
     private var currentPosition = 0
@@ -35,6 +43,8 @@ class ComputerScienceGameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            soundViewModel.setSoundOn(false)
+            gameSoundViewModel.setSoundOn(true)
 
             csGameViewModel.position.observe(viewLifecycleOwner) {
                 currentPosition = it
@@ -125,7 +135,54 @@ class ComputerScienceGameFragment : Fragment() {
                 }
             }
             playAnimation(QuestionTv, 0, csGameViewModel.questionsList[currentPosition].question)
+
+            skipBtn.setOnClickListener {
+                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick?.start()
+
+                csGameViewModel.skipQuestion()
+
+                if (savedInstanceState == null) {
+                    csGameViewModel.resetTimer()
+                    view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
+
+                }
+
+                csGameViewModel.resetTimer()
+                counterTv.setTextColor(Color.BLACK)
+                view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.playAnimation()
+
+                btnNext.isEnabled = false
+                btnNext.alpha = 0.3f
+                enableOption(true)
+
+
+
+                if (currentPosition >= csGameViewModel.questionsList.size) {
+                    gameSoundViewModel.setSoundOn(false)
+                    soundViewModel.setSoundOn(true)
+
+                    findNavController().navigate(
+                        R.id.resultsFragment,
+                        bundleOf(
+                            "result" to csGameViewModel.score.value,
+                            "total" to csGameViewModel.questionsList.size,
+                            "skipped" to csGameViewModel.skipped.value
+
+                        )
+                    )
+                    return@setOnClickListener
+                }
+                count = 0
+                playAnimation(QuestionTv, 0, csGameViewModel.questionsList[currentPosition].question)
+
+            }
+
+
             btnNext.setOnClickListener {
+                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick?.start()
+
                 if (savedInstanceState == null) {
                     csGameViewModel.resetTimer()
                     view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)
@@ -143,12 +200,15 @@ class ComputerScienceGameFragment : Fragment() {
                 csGameViewModel.increasePosition()
 
                 if (currentPosition == csGameViewModel.questionsList.size) {
+                    gameSoundViewModel.setSoundOn(false)
+                    soundViewModel.setSoundOn(true)
+
                     findNavController().navigate(
                         R.id.resultsFragment,
                         bundleOf(
                             "result" to csGameViewModel.score.value,
                             "total" to csGameViewModel.questionsList.size,
-                            "anim" to R.raw.cs_result
+                            "skipped" to csGameViewModel.skipped.value
                         )
                     )
 
@@ -163,6 +223,10 @@ class ComputerScienceGameFragment : Fragment() {
             }
 
         }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            showQuitDialog()
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -174,11 +238,13 @@ class ComputerScienceGameFragment : Fragment() {
         for (i in 0..3) {
             binding.optContainer.getChildAt(i).isEnabled = b
             if (b) {
-                binding.optContainer.getChildAt(i).setBackgroundResource(R.drawable.btn_opts)
+                binding.optContainer.getChildAt(i).setBackgroundResource(R.drawable.btn_opt)
             }
         }
     }
     private fun showTimeUpDialog() {
+        view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
+
         val dialog = Dialog(requireContext())
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window?.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
@@ -186,11 +252,49 @@ class ComputerScienceGameFragment : Fragment() {
         dialog.setContentView(R.layout.timeup_dialogue)
 
         dialog.findViewById<View>(R.id.tryAgainbtn).setOnClickListener {
-            findNavController().popBackStack(R.id.android_levelsFragment, false)
+            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick?.start()
+            gameSoundViewModel.setSoundOn(false)
+            soundViewModel.setSoundOn(true)
+
+            findNavController().popBackStack(R.id.computerScienceFragment, false)
             dialog.dismiss()
         }
         dialog.show()
     }
+    private fun showQuitDialog() {
+        csGameViewModel.stopTimer()
+        view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
+
+        val dialog = Dialog(requireContext())
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.quit_dialogue)
+
+        dialog.findViewById<View>(R.id.yesbtn).setOnClickListener {
+            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick?.start()
+
+            findNavController().popBackStack(R.id.computerScienceFragment, false)
+            gameSoundViewModel.setSoundOn(false)
+            soundViewModel.setSoundOn(true)
+            dialog.dismiss()
+        }
+
+        dialog.findViewById<View>(R.id.nobtn).setOnClickListener{
+            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick?.start()
+
+            dialog.dismiss()
+            csGameViewModel.playTimer()
+            view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.playAnimation()
+
+        }
+
+        dialog.show()
+    }
+
     private fun playAnimation(view: View, value: Int, data: String) {
         view.animate().alpha(value.toFloat()).scaleX(value.toFloat()).scaleY(value.toFloat())
             .setDuration(500).setStartDelay(100)
@@ -239,8 +343,14 @@ class ComputerScienceGameFragment : Fragment() {
         binding.btnNext.isEnabled = true
         binding.btnNext.alpha = 1f
         if (csGameViewModel.checkAnswer(selectedOption.text.toString())) {
+            mediaPlayer = MediaPlayer.create(requireContext(),R.raw.correct_answer_sound_effects)
+            mediaPlayer?.start()
+
             selectedOption.setBackgroundResource(R.drawable.correct)
         } else {
+            mediaPlayer = MediaPlayer.create(requireContext(),R.raw.wrong_answer_sound)
+            mediaPlayer?.start()
+
             selectedOption.setBackgroundResource(R.drawable.wrong)
             val correctOption =
                 binding.optContainer.findViewWithTag(csGameViewModel.questionsList[currentPosition].correctAnswer) as Button

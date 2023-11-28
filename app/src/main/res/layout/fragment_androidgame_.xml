@@ -12,7 +12,7 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/view2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="250dp"
         app:lottie_rawRes="@raw/androidtop"
         app:lottie_loop="true"
@@ -48,37 +48,43 @@
                 android:id="@+id/lottieAnimationView2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/timer" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/counterTv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="3dp"
+                android:background="@drawable/btn_opt"
+                android:backgroundTint="#F2F1EDF8"
+                android:fontFamily="@font/baloo"
+                android:padding="8dp"
                 android:text=""
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="16sp"
                 android:theme="@style/txt"
                 app:layout_constraintBottom_toBottomOf="@+id/lottieAnimationView2"
                 app:layout_constraintStart_toEndOf="@+id/lottieAnimationView2"
-                app:layout_constraintTop_toTopOf="@+id/lottieAnimationView2" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/numOfqTv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/btn_opt"
+                android:backgroundTint="#F2F4F2F6"
+                android:fontFamily="@font/baloo"
+                android:padding="8dp"
                 android:text=""
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="16sp"
                 android:theme="@style/txt"
-                app:layout_constraintBottom_toBottomOf="@+id/lottieAnimationView2"
+                app:layout_constraintBottom_toBottomOf="@+id/counterTv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
 
             <androidx.cardview.widget.CardView
@@ -102,7 +108,7 @@
                         android:id="@+id/QuestionTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-black"
+                        android:fontFamily="@font/fredoka_one"
                         android:text="How many Android Questions Can You Answer?"
                         android:textAlignment="center"
                         android:textColor="@color/white"
@@ -132,7 +138,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_opt"
-                    android:fontFamily="@font/inter"
+                    android:fontFamily="@font/fredoka_one"
                     android:text=""
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -145,6 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/fredoka_one"
                     android:background="@drawable/btn_opt"
                     android:text=""
                     android:theme="@style/txt"
@@ -159,6 +166,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/fredoka_one"
                     android:background="@drawable/btn_opt"
                     android:text=""
                     android:theme="@style/txt"
@@ -174,6 +182,7 @@
                     android:background="@drawable/btn_opt"
                     android:text=""
                     android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/fredoka_one"
                     android:theme="@style/txt"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -189,8 +198,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="Skip"
+                android:fontFamily="@font/fredoka_one"
+                android:textColor="@color/black"
                 android:textSize="20sp"
-                android:theme="@style/btn"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/optContainer"
@@ -204,6 +214,7 @@
                 android:layout_marginTop="30dp"
                 android:backgroundTint="#032701"
                 android:text="Next"
+                android:fontFamily="@font/fredoka_one"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
