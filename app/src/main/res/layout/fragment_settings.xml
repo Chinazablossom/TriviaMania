@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsFragment"
+    tools:context=".ui.screens.SettingsFragment"
     android:background="#9584F3"
     android:padding="16dp"
     >
@@ -36,8 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloo"
-            android:text="Settings"
-            android:textSize="35dp"
+            android:text="@string/settings"
+            android:textSize="35sp"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -68,8 +68,8 @@
                 android:layout_marginTop="5dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/baloo_bhaina"
-                android:text="Sound:"
-                android:textSize="24dp" />
+                android:text="@string/sound"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/txtSwitch"
@@ -79,8 +79,8 @@
                 android:layout_marginTop="5dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/baloo_bhaina"
-                android:text="ON"
-                android:textSize="24dp"
+                android:text="@string/on"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="@+id/yesbtn"
                 app:layout_constraintStart_toEndOf="@+id/yesbtn"
                 app:layout_constraintTop_toTopOf="@+id/yesbtn" />
@@ -91,8 +91,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloo_bhaina"
-            android:text="How to play"
-            android:textSize="24dp"
+            android:text="@string/how_to_play"
+            android:textSize="24sp"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -103,8 +103,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloo_bhaina"
-            android:text="About"
-            android:textSize="24dp"
+            android:text="@string/aboutt"
+            android:textSize="24sp"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

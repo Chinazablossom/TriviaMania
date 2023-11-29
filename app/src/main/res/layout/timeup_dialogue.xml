@@ -30,7 +30,7 @@
         android:background="@drawable/card_background"
         android:backgroundTint="#FB3A3A"
         android:fontFamily="@font/fredoka_one"
-        android:text="Try Again"
+        android:text="@string/try_again"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

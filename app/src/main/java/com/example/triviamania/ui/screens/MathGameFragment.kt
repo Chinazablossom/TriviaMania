@@ -167,7 +167,9 @@ class MathGameFragment : Fragment() {
                         bundleOf(
                             "result" to mathGameViewModel.score.value,
                             "total" to mathGameViewModel.questionsList.size,
-                            "skipped" to mathGameViewModel.skipped.value
+                            "skipped" to mathGameViewModel.skipped.value,
+                            "goto" to R.id.mathsFragment
+
 
                         )
                     )
@@ -355,5 +357,13 @@ class MathGameFragment : Fragment() {
     }
 
 
+    override fun onResume() {
+        super.onResume()
+
+        if (gameSoundViewModel.isSoundOn.value == true){
+            gameSoundViewModel.mediaPlayer?.start()
+        }
+
+    }
 
 }

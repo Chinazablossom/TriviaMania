@@ -167,7 +167,9 @@ class ScienceGameFragment : Fragment() {
                         bundleOf(
                             "result" to scienceGameViewModel.score.value,
                             "total" to scienceGameViewModel.questionsList.size,
-                            "skipped" to scienceGameViewModel.skipped.value
+                            "skipped" to scienceGameViewModel.skipped.value,
+                            "goto" to R.id.scienceLevelFragment
+
 
                         )
                     )
@@ -350,4 +352,13 @@ class ScienceGameFragment : Fragment() {
 
     }
 
+
+    override fun onResume() {
+        super.onResume()
+
+        if (gameSoundViewModel.isSoundOn.value == true){
+            gameSoundViewModel.mediaPlayer?.start()
+        }
+
+    }
 }

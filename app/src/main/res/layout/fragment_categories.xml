@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="52dp"
-            android:text="Its time to"
+            android:text="@string/its_time_to"
             android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -44,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:fontFamily="sans-serif-black"
-            android:text="Test your Knowledge"
+            android:text="@string/test_your_knowledge"
             android:textColor="@color/white"
             android:textSize="35sp"
             android:textStyle="bold"
@@ -132,7 +133,7 @@
                                 android:layout_marginBottom="10dp"
                                 android:fontFamily="sans-serif-black"
                                 android:gravity="center"
-                                android:text="Sciences"
+                                android:text="@string/sciences"
                                 android:textColor="@color/black"
 
                                 />
@@ -177,7 +178,7 @@
                                 android:layout_marginBottom="10dp"
                                 android:fontFamily="sans-serif-black"
                                 android:gravity="center"
-                                android:text="Mathematics"
+                                android:text="@string/mathematics"
                                 android:textColor="@color/black"
 
                                 />
@@ -222,7 +223,7 @@
                                 android:layout_marginBottom="10dp"
                                 android:fontFamily="sans-serif-black"
                                 android:gravity="center"
-                                android:text="Entertainment"
+                                android:text="@string/entertainment"
                                 android:textColor="@color/black"
 
                                 />
@@ -312,7 +313,7 @@
                                 android:layout_marginBottom="10dp"
                                 android:fontFamily="sans-serif-black"
                                 android:gravity="center"
-                                android:text="@string/android_trivia"
+                                android:text="@string/android"
                                 android:textColor="@color/black"
 
                                 />
@@ -356,7 +357,7 @@
                                 android:layout_marginBottom="10dp"
                                 android:fontFamily="sans-serif-black"
                                 android:gravity="center"
-                                android:text="Computer Science"
+                                android:text="@string/computer_science"
                                 android:textColor="@color/black"
 
                                 />
@@ -400,7 +401,7 @@
                                 android:layout_marginBottom="10dp"
                                 android:fontFamily="sans-serif-black"
                                 android:gravity="center"
-                                android:text="History"
+                                android:text="@string/history"
                                 android:textColor="@color/black"
 
                                 />

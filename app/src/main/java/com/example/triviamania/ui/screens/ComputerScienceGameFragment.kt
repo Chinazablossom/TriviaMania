@@ -167,7 +167,9 @@ class ComputerScienceGameFragment : Fragment() {
                         bundleOf(
                             "result" to csGameViewModel.score.value,
                             "total" to csGameViewModel.questionsList.size,
-                            "skipped" to csGameViewModel.skipped.value
+                            "skipped" to csGameViewModel.skipped.value,
+                            "goto" to R.id.computerScienceFragment
+
 
                         )
                     )
@@ -359,6 +361,13 @@ class ComputerScienceGameFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
 
+        if (gameSoundViewModel.isSoundOn.value == true){
+            gameSoundViewModel.mediaPlayer?.start()
+        }
+
+    }
 
 }

@@ -174,7 +174,9 @@ class EntertainmentGameFragment : Fragment() {
                         bundleOf(
                             "result" to entertainmentGameViewModel.score.value,
                             "total" to entertainmentGameViewModel.questionsList.size,
-                            "skipped" to entertainmentGameViewModel.skipped.value
+                            "skipped" to entertainmentGameViewModel.skipped.value,
+                            "goto" to R.id.entertainmentFragment
+
 
                         )
                     )
@@ -369,5 +371,13 @@ class EntertainmentGameFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        if (gameSoundViewModel.isSoundOn.value == true){
+            gameSoundViewModel.mediaPlayer?.start()
+        }
+
+    }
 
 }

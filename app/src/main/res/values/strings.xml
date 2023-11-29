@@ -1,17 +1,60 @@
 <resources>
     <string name="app_name">TriviaMania</string>
     <string name="game_over">Game Over</string>
-    <string name="select_an_avatar">Select an Avatar</string>
-    <string name="android_trivia">Android</string>
-    <string name="about_text">Android Trivia will help remind you of important concepts you have learned and will learn in Android development.\n\nConsider modifying the questions and graphics to make this game your own!</string>
-    <string name="rules_text">Select the answer from the options given. Each time you get an answer correct, you advance to the next question.\n\nIf you get the answer wrong, your game ends! You can return to the title screen using up or back from within the game screen, and this will also end your game.</string>
-
+    <string name="howToPlay">
+\n\🔍Select Your Category: Start by choosing a category that piques your interest. Whether it\'s Science, Android, Maths, Computer Science, History, or Entertainment, each category offers a unique set of questions.\n
+\❓Answer Questions: Once you\'ve selected a category and in game mode, the trivia questions will begin. Read each question carefully and choose the correct answer from the options provided. Trust your instincts and knowledge!, Each time you get an answer correct, you advance to the next question.\n
+\⏳Time is of the Essence: Keep an eye on the timer! the questions might be time-sensitive, adding an extra layer of excitement and urgency to the game.\n
+\💃Have Fun and Learn: Remember, the primary goal is to have fun while expanding your knowledge. Whether you\'re playing for leisure or aiming to be trivia expert, TriviaMania offers an engaging way to learn and enjoy the learning journey.</string>
     <string name="timer">%d</string>
-
     <string name="next">Next</string>
     <string name="amountOfQuestions">Question %1$d of %2$d</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="about">\n\🧠 Explore the Depths of Science: Dive into the fascinating world of science with TriviaMania, Unleash your inner scientist as you tackle questions ranging from the microscopic wonders of biology, chemistry, physics, and more challenge yourself with questions that will test your scientific savvy, Whether you\'re a physics whiz or a biology buff, our science trivia will put your knowledge to the test!.\n\n\🤖 Navigate the Android Universe: Unleash your inner tech guru as you delve into the Android realm. Whether you\'re an avid user or a coding whiz, our trivia questions will take you on a journey through the evolution of Android and the cutting-edge technology that powers it, From the latest advancements in mobile devices to the evolution of android development, TriviaMania will challenge your tech-savvy side\n\n\➕ Crunch the Numbers with Math Madness: For the number crunchers and problem solvers prepare for a mental workout with our mathematics category, our mathematics trivia is a playground of equations and logic, from basic arithmetic to advanced calculus, Sharpen your mathematical prowess and tackle brain-teasing challenges that will put your arithmetic and problem-solving skills to the test.\n\n\💻 Decipher the Code in Computer Science: Enter the world of algorithms, programming languages, cyber security and the foundations of computing. Our Computer Science trivia will keep you on your toes with questions that span the vast landscape of computer science. Are you ready to code your way to victory?.\n\n\🕰️ Rewind through History: Take a trip back in time and explore the annals of human history. From ancient civilizations to modern revolutions, our History category will test your knowledge of pivotal moments, influential figures, and the stories that shaped the world we live in today.\n\n\🎬 Entertainment Extravaganza: Lights, camera, action! Immerse yourself in the glitz and glamour of the entertainment world the entertainment category is a star-studded experience roller coaster ride through the world of blockbuster movies to chart-topping music, TV shows, and pop culture phenomena. Whether you\'re a film buff or a trivia aficionado, get ready to relive iconic moments and showcase your knowledge of the entertainment industry.\n\n\🌟 Why TriviaMania ?\n—Diverse Topics: With a wide range of categories, there\'s something for every curious mind.\n—Challenge Yourself: Test your knowledge across various domains and discover new interests.\n—Learn as You Play: Expand your knowledge while having a blast with our engaging trivia questions.\n—Join us in the quest for knowledge and entertainment – where learning meets leisure.\n\nGet ready to embark on a journey of discovery, where every question is a chance to learn something new and every correct answer brings you closer to trivia glory. Whether you\'re a science enthusiast, tech guru, history buff, or entertainment aficionado, TriviaMania has something for everyone. Are you up for the challenge? Test your wits and find out if you to become the ultimate trivia master! \🚀\✨</string>
+    <string name="how_to_play_triviamania">How to Play TriviaMania:</string>
+    <string name="about_triviamania">About TriviaMania</string>
+    <string name="welcome_to_triviamania">Welcome to TriviaMania – the ultimate fusion of knowledge and fun!, that spans the realms of science, android technology, mathematics, computer science, history, and entertainment! Our trivia game is designed to challenge and entertain the curious minds of players who crave a diverse range of questions that delve into the fascinating worlds of discovery, innovation, and human achievement.</string>
+    <string name="how_many_android">How many Android Questions Can You Answer?</string>
+    <string name="skip">Skip</string>
+    <string name="its_time_to">It\'s time to</string>
+    <string name="test_your_knowledge">Test your Knowledge</string>
+    <string name="sciences">Sciences</string>
+    <string name="mathematics">Mathematics</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="android">Android</string>
+    <string name="computer_science">Computer Science</string>
+    <string name="history">History</string>
+    <string name="easy">Easy</string>
+    <string name="total_100_questions">Total 100 Questions</string>
+    <string name="medium">Medium</string>
+    <string name="total_250_questions">Total 250 Questions</string>
+    <string name="hard">Hard</string>
+    <string name="total_320_questions">Total 320 Questions</string>
+    <string name="very_hard">Very Hard</string>
+    <string name="total_450_questions">Total 450 Questions</string>
+    <string name="how_many_cs_questions_can_you_answer">How many CS Questions Can You Answer?</string>
+    <string name="how_many_entertainment_questions_can_you_answer">How many Entertainment Questions Can You Answer?</string>
+    <string name="world_history">World history</string>
+    <string name="how_many_history_questions_can_you_answer">How many history Questions Can You Answer?</string>
+    <string name="how_many_android_questions_can_you_answer">How many Android Questions Can You Answer?</string>
+    <string name="result">Result</string>
+    <string name="all">All</string>
+    <string name="correct">Correct</string>
+    <string name="wrong">Wrong</string>
+    <string name="skipped">Skipped</string>
+    <string name="retry">Retry</string>
+    <string name="quit">Quit</string>
+    <string name="how_many_science_questions_can_you_answer">How many Science Questions Can You Answer?</string>
+    <string name="science_levels">Science Levels</string>
+    <string name="settings">Settings</string>
+    <string name="sound">Sound:</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="how_to_play">How to play</string>
+    <string name="aboutt">About</string>
+    <string name="android_levels">Android Levels</string>
+    <string name="are_you_sure_you_want_to_quit_ncurrent_progress_will_be_lost">Are you sure you want to quit?\ncurrent progress will be lost</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="try_again">Try Again</string>
 
 </resources>

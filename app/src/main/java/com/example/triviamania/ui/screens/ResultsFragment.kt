@@ -40,6 +40,7 @@ class ResultsFragment : Fragment() {
             val totalQuest = arguments?.getInt("total")
             val correctAnswers = arguments?.getInt("result")
             val skipped = arguments?.getInt("skipped")
+            val goto = arguments?.getInt("goto")
             val wrong = skipped?.let { (correctAnswers?.let { totalQuest?.minus(it) })?.minus(it) }
 
 
@@ -50,7 +51,9 @@ class ResultsFragment : Fragment() {
 
 
             retrybtn.setOnClickListener{
-                findNavController().navigate(R.id.android_levelsFragment)
+                if (goto != null) {
+                    findNavController().navigate(goto)
+                }
             }
 
             quitbtn.setOnClickListener{

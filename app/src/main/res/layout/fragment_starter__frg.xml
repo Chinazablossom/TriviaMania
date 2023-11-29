@@ -62,7 +62,7 @@
             <ImageView
                 android:id="@+id/appName"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="45dp"
                 android:fontFamily="@font/berkshire_swash"
                 android:gravity="center"
                 android:src="@drawable/triviamania"

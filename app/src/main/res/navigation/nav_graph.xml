@@ -169,7 +169,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.triviamania.SettingsFragment"
+        android:name="com.example.triviamania.ui.screens.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
         <action
@@ -186,7 +186,7 @@
         tools:layout="@layout/fragment_rules" />
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.example.triviamania.AboutFragment"
+        android:name="com.example.triviamania.ui.screens.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
 

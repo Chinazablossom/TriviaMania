@@ -171,7 +171,8 @@ class AndroidGameFragment : Fragment() {
                         bundleOf(
                             "result" to androidGameViewModel.score.value,
                             "total" to androidGameViewModel.questionsList.size,
-                            "skipped" to androidGameViewModel.skipped.value
+                            "skipped" to androidGameViewModel.skipped.value,
+                            "goto" to R.id.android_levelsFragment
 
                         )
                     )
@@ -360,7 +361,14 @@ class AndroidGameFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
 
+        if (gameSoundViewModel.isSoundOn.value == true){
+            gameSoundViewModel.mediaPlayer?.start()
+        }
+
+    }
 }
 
 

@@ -171,7 +171,9 @@ class HistoryGameFragment : Fragment() {
                         bundleOf(
                             "result" to historyGameViewModel.score.value,
                             "total" to historyGameViewModel.questionsList.size,
-                            "skipped" to historyGameViewModel.skipped.value
+                            "skipped" to historyGameViewModel.skipped.value,
+                            "goto" to R.id.historyFragment
+
 
                         )
                     )
@@ -360,6 +362,15 @@ class HistoryGameFragment : Fragment() {
             val correctOption =
                 binding.optContainer.findViewWithTag(historyGameViewModel.questionsList[currentPosition].correctAnswer) as Button
             correctOption.setBackgroundResource(R.drawable.correct)
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (gameSoundViewModel.isSoundOn.value == true){
+            gameSoundViewModel.mediaPlayer?.start()
         }
 
     }

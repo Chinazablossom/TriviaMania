@@ -6,15 +6,17 @@
             android:shape="rectangle"
             >
             <corners
-                android:radius="70dp"/>
+                android:topLeftRadius="40dp"
+                android:topRightRadius="40dp"
+                />
 
-            <stroke android:width="8dp"
+            <stroke android:width="15dp"
                 android:color="@color/white"
                 />
 
             <gradient
-                android:startColor="#9584F3"
-                android:endColor="#9584F3"
+                android:startColor="#C8F384"
+                android:endColor="#C8F384"
                 />
 
         </shape>
