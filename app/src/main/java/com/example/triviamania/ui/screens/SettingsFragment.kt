@@ -42,6 +42,7 @@ class SettingsFragment : Fragment() {
                 }
             }
 
+
             about.setOnClickListener {
                 findNavController().navigate(R.id.aboutFragment)
             }

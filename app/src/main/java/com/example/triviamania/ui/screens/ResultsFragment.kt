@@ -15,6 +15,7 @@ import com.example.triviamania.databinding.FragmentResultsBinding
 class ResultsFragment : Fragment() {
     lateinit var binding: FragmentResultsBinding
     private var mediaPlayer: MediaPlayer? = null
+    private var mediaPlayerClick: MediaPlayer? = null
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -23,7 +24,6 @@ class ResultsFragment : Fragment() {
         return binding.root
 
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,7 +35,6 @@ class ResultsFragment : Fragment() {
 
 
         binding.apply {
-
 
             val totalQuest = arguments?.getInt("total")
             val correctAnswers = arguments?.getInt("result")
@@ -57,13 +56,25 @@ class ResultsFragment : Fragment() {
             }
 
             quitbtn.setOnClickListener{
+                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick?.start()
+
+                findNavController().popBackStack(R.id.categoriesFragment,false)
+            }
+
+            bckLL.setOnClickListener {
+                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick?.start()
+
                 findNavController().popBackStack(R.id.categoriesFragment,false)
             }
 
             requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick?.start()
+
                 findNavController().popBackStack(R.id.categoriesFragment,false)
             }
-
 
         }
 

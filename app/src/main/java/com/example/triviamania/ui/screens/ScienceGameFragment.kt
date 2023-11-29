@@ -169,8 +169,6 @@ class ScienceGameFragment : Fragment() {
                             "total" to scienceGameViewModel.questionsList.size,
                             "skipped" to scienceGameViewModel.skipped.value,
                             "goto" to R.id.scienceLevelFragment
-
-
                         )
                     )
                     return@setOnClickListener

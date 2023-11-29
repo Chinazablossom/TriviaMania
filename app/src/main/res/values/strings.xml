@@ -2,9 +2,9 @@
     <string name="app_name">TriviaMania</string>
     <string name="game_over">Game Over</string>
     <string name="howToPlay">
-\n\🔍Select Your Category: Start by choosing a category that piques your interest. Whether it\'s Science, Android, Maths, Computer Science, History, or Entertainment, each category offers a unique set of questions.\n
-\❓Answer Questions: Once you\'ve selected a category and in game mode, the trivia questions will begin. Read each question carefully and choose the correct answer from the options provided. Trust your instincts and knowledge!, Each time you get an answer correct, you advance to the next question.\n
-\⏳Time is of the Essence: Keep an eye on the timer! the questions might be time-sensitive, adding an extra layer of excitement and urgency to the game.\n
+\n\🔍Select Your Category: Start by choosing a category that piques your interest. Whether it\'s Science, Android, Maths, Computer Science, History, or Entertainment, each category offers a unique set of questions.\n\n
+\❓Answer Questions: Once you\'ve selected a category and in game mode, the trivia questions will begin. Read each question carefully and choose the correct answer from the options provided. Trust your instincts and knowledge!, Each time you get an answer correct, you advance to the next question.\n\n
+\⏳Time is of the Essence: Keep an eye on the timer! the questions might be time-sensitive, adding an extra layer of excitement and urgency to the game.\n\n
 \💃Have Fun and Learn: Remember, the primary goal is to have fun while expanding your knowledge. Whether you\'re playing for leisure or aiming to be trivia expert, TriviaMania offers an engaging way to learn and enjoy the learning journey.</string>
     <string name="timer">%d</string>
     <string name="next">Next</string>

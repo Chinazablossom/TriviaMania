@@ -30,7 +30,7 @@ class StagesAdapter(
         holder.binding.stagesNumbers.text = model.stageName
         val bundle = bundleOf("Key" to model.stageName)
         holder.itemView.setOnClickListener {
-            mediaPlayer = MediaPlayer.create(context,R.raw.mouse_click_sound_effect)
+            mediaPlayer = MediaPlayer.create(context,R.raw.game_click)
             mediaPlayer?.start()
             it.findNavController().navigate(destination, bundle)
         }
