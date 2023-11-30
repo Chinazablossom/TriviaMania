@@ -3,7 +3,7 @@
 ## Table of Contents
 - [About the app](#about-the-app)
 - [Used in App](#used-in-app)
-- [📱 App Screenshots](#📱-app-screenshots)
+- [App Screenshots](#app-screenshots)
 - [How to Play](#how-to-play)
 - [SDK Requirements](#sdk-requirements)
 - [Clone the repo](#clone-the-repo)
@@ -40,7 +40,7 @@ Get ready to embark on a journey of discovery, where every question is a chance 
 - External libraries: LottieFiles <br>
 <br><br>
 
-## 📱 App Screenshots
+## App Screenshots
 
 <table> 
 <tr> 
