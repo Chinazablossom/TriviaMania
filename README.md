@@ -1,14 +1,13 @@
 # 🧠 TriviaMania
 
 ## Table of Contents
-- [About the app](#Abouttheapp)
-- [Used in App](#UsedinApp)
-- [Screenshots](#Screenshots)
-- [How to Play](#HowtoPlay)
-- [SDK Requirements](#SDKRequirements)
-- [Clone the repo](#Clonetherepo)
-
-
+- [About the app](#about-the-app)
+- [Used in App](#used-in-app)
+- [Screenshots](#screenshots)
+- [How to Play](#how-to-play)
+- [SDK Requirements](#sdk-requirements)
+- [Clone the repo](#clone-the-repo)
+  
 ## About the app
 
 - 🧠 **Explore the Depths of Science:** Dive into the fascinating world of science with TriviaMania. Unleash your inner scientist as you tackle questions ranging from the microscopic wonders of biology, chemistry, physics, and more. Challenge yourself with questions that will test your scientific savvy. Whether you're a physics whiz or a biology buff, our science trivia will put your knowledge to the test!
