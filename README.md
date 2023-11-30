@@ -44,10 +44,10 @@ Get ready to embark on a journey of discovery, where every question is a chance 
 
 <table> 
 <tr> 
-<th> <img src="![Screenshot_20231130-100252~2](https://github.com/Chinazablossom/TriviaMania/assets/107410128/8ab22440-3ff1-4d28-b91f-3b1a5240f543)" width=200></th>
-<th>![Screenshot_20231130-125227~2](https://github.com/Chinazablossom/TriviaMania/assets/107410128/02212034-0677-43b7-aa3d-8340424a9fe6)</th> 
-<th>  </th>
-<th>  </th>
+<th> <img src= "https://github.com/Chinazablossom/TriviaMania/assets/107410128/8452a12c-0555-4da3-ae39-0d6c7591f917" width="200" ></th>
+<th> <img src= "https://github.com/Chinazablossom/TriviaMania/assets/107410128/baa79b63-72d3-410a-a6f0-9c8c2c9060ce" width="200" ></th> 
+<th> <img src= "https://github.com/Chinazablossom/TriviaMania/assets/107410128/984a3669-1392-4ef5-8a80-1cb65bb3e440" width="200" ></th>
+<th> <img src= "https://github.com/Chinazablossom/TriviaMania/assets/107410128/5805a702-42d5-422a-9379-3d1bf8025804" width="200" ></th>
 </tr>
 
 <tr> 
@@ -58,10 +58,10 @@ Get ready to embark on a journey of discovery, where every question is a chance 
 </tr>
 
 <tr> 
-<th>  </th>
-<th>  </th>
-<th>  </th> 
-<th>  </th>  
+<th><img src= "https://github.com/Chinazablossom/TriviaMania/assets/107410128/fdf48181-a036-43cb-8890-f242eea5dc59" width="200" ></th>
+<th><img src= "https://github.com/Chinazablossom/TriviaMania/assets/107410128/fda2151b-c4fb-4f2d-a1c5-ef0b5e3cc81f" width="200" ></th>
+<th><img src= "https://github.com/Chinazablossom/TriviaMania/assets/107410128/f582f72d-28bc-4cf6-8581-a9ac8248cff5" width="200" ></th> 
+<th><img src= "https://github.com/Chinazablossom/TriviaMania/assets/107410128/108cf431-71d4-4d05-90ad-b3aefde4b861" width="200" ></th>  
 </tr>  
 
 <tr> 
@@ -72,10 +72,9 @@ Get ready to embark on a journey of discovery, where every question is a chance 
 </tr>
 
 <tr>
-<th>  </th>  
-<th>  </th>  
-<th>  </th>  
-<th>  </th>  
+<th><img src= "https://github.com/Chinazablossom/TriviaMania/assets/107410128/4046a2fd-2578-46c9-bbc4-a2583a62dda2" width="200" ></th>  
+<th><img src= "https://github.com/Chinazablossom/TriviaMania/assets/107410128/c906aef4-dddf-4a75-b415-fa4730c5c0f0" width="200" ></th>  
+<th><img src= "https://github.com/Chinazablossom/TriviaMania/assets/107410128/4e5a710a-70f7-4541-a7f7-ddaf49b9f071" width="200" ></th>  
 </tr> 
 
 <tr> 
