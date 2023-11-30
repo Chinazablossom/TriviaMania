@@ -3,7 +3,7 @@
 ## Table of Contents
 - [About the app](#about-the-app)
 - [Used in App](#used-in-app)
-- [📱 App Screenshots](#📱-App-Screenshots)
+- [📱 App Screenshots](#📱-app-screenshots)
 - [How to Play](#how-to-play)
 - [SDK Requirements](#sdk-requirements)
 - [Clone the repo](#clone-the-repo)
