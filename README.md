@@ -1,12 +1,12 @@
 # 🧠 TriviaMania
 
 ## Table of Contents
-- [About the app](#abouttheapp)
-- [🔧 Used in App](#usedinapp)
-- [Screenshots](#screenshots)
+- [About the app](#Abouttheapp)
+- [Used in App](#UsedinApp)
+- [Screenshots](#Screenshots)
 - [How to Play](#HowtoPlay)
-- [SDK Requirements](#sdkrequirements)
-- [Clone the repo](#clonetherepo)
+- [SDK Requirements](#SDKRequirements)
+- [Clone the repo](#Clonetherepo)
 
 
 ## About the app
@@ -31,7 +31,8 @@
 
 Get ready to embark on a journey of discovery, where every question is a chance to learn something new and every correct answer brings you closer to trivia glory. Whether you're a science enthusiast, tech guru, history buff, or entertainment aficionado, TriviaMania has something for everyone. Are you up for the challenge? Test your wits and find out if you can become the ultimate trivia master! 🚀✨
 
-## 🔧 Used in App
+## Used in App
+
 - Kotlin
 - MVVM (Model View ViewModel) architectural pattern
 - ViewBinding
@@ -87,6 +88,7 @@ Get ready to embark on a journey of discovery, where every question is a chance 
 <br><br>
 
 # How to Play
+
 - ### Installation:
   - Ensure you have TriviaMania installed on your device.
 
@@ -117,10 +119,12 @@ Get ready to embark on a journey of discovery, where every question is a chance 
  - Now that you know the ropes, dive into the world of TriviaMania and let the games begin! May your knowledge shine, and may you become the ultimate trivia master. Good luck! 🌟🚀
 
 ## SDK Requirements
+
 - Minimum SDK Requirement --- API 24 Android 7.0 (Nougat)
 - Target SDK Requirement –-- API 34 Android API 34
 
 ## Clone the repo
+
 - [Here](https://github.com/Chinazablossom/TriviaMania.git)
 
 
