@@ -44,8 +44,8 @@ Get ready to embark on a journey of discovery, where every question is a chance 
 
 <table> 
 <tr> 
-<th> </th>
-<th> </th> 
+<th> <img src="![Screenshot_20231130-100252~2](https://github.com/Chinazablossom/TriviaMania/assets/107410128/8ab22440-3ff1-4d28-b91f-3b1a5240f543)" width=200></th>
+<th>![Screenshot_20231130-125227~2](https://github.com/Chinazablossom/TriviaMania/assets/107410128/02212034-0677-43b7-aa3d-8340424a9fe6)</th> 
 <th>  </th>
 <th>  </th>
 </tr>
