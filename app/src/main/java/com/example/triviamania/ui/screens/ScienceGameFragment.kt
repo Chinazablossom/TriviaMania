@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.media.MediaPlayer
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +15,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -36,7 +36,11 @@ class ScienceGameFragment : Fragment() {
     private lateinit var binding: FragmentScienceGameBinding
     private var count = 0
     private var currentPosition = 0
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentScienceGameBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -77,6 +81,7 @@ class ScienceGameFragment : Fragment() {
                     scienceGameViewModel.scienceStageOne()
 
                 }
+
                 "Stage 2" -> {
                     scienceGameViewModel.scienceStageTwo()
                 }
@@ -136,17 +141,23 @@ class ScienceGameFragment : Fragment() {
                     checkAnswer(it as Button)
                 }
             }
-            playAnimation(QuestionTv, 0, scienceGameViewModel.questionsList[currentPosition].question)
+            playAnimation(
+                QuestionTv,
+                0,
+                scienceGameViewModel.questionsList[currentPosition].question
+            )
 
             skipBtn.setOnClickListener {
-                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick =
+                    MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
                 mediaPlayerClick?.start()
 
                 scienceGameViewModel.skipQuestion()
 
                 if (savedInstanceState == null) {
                     scienceGameViewModel.resetTimer()
-                    view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
+                    view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)
+                        ?.pauseAnimation()
 
                 }
 
@@ -174,12 +185,17 @@ class ScienceGameFragment : Fragment() {
                     return@setOnClickListener
                 }
                 count = 0
-                playAnimation(QuestionTv, 0, scienceGameViewModel.questionsList[currentPosition].question)
+                playAnimation(
+                    QuestionTv,
+                    0,
+                    scienceGameViewModel.questionsList[currentPosition].question
+                )
 
             }
 
             btnNext.setOnClickListener {
-                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick =
+                    MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
                 mediaPlayerClick?.start()
 
                 if (savedInstanceState == null) {
@@ -202,15 +218,21 @@ class ScienceGameFragment : Fragment() {
                     gameSoundViewModel.setSoundOn(false)
                     soundViewModel.setSoundOn(true)
 
-                    findNavController().navigate(R.id.resultsFragment, bundleOf(
+                    findNavController().navigate(
+                        R.id.resultsFragment, bundleOf(
                             "result" to scienceGameViewModel.score.value,
                             "total" to scienceGameViewModel.questionsList.size,
-                        "skipped" to scienceGameViewModel.skipped.value                        )
+                            "skipped" to scienceGameViewModel.skipped.value
+                        )
                     )
                     return@setOnClickListener
                 }
                 count = 0
-                playAnimation(QuestionTv, 0, scienceGameViewModel.questionsList[currentPosition].question)
+                playAnimation(
+                    QuestionTv,
+                    0,
+                    scienceGameViewModel.questionsList[currentPosition].question
+                )
             }
 
         }
@@ -235,6 +257,7 @@ class ScienceGameFragment : Fragment() {
             }
         }
     }
+
     private fun showTimeUpDialog() {
         view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
 
@@ -245,7 +268,7 @@ class ScienceGameFragment : Fragment() {
         dialog.setContentView(R.layout.timeup_dialogue)
 
         dialog.findViewById<View>(R.id.tryAgainbtn).setOnClickListener {
-            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick = MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
             mediaPlayerClick?.start()
             gameSoundViewModel.setSoundOn(false)
             soundViewModel.setSoundOn(true)
@@ -254,6 +277,7 @@ class ScienceGameFragment : Fragment() {
         }
         dialog.show()
     }
+
     private fun showQuitDialog() {
         scienceGameViewModel.stopTimer()
         view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
@@ -265,7 +289,7 @@ class ScienceGameFragment : Fragment() {
         dialog.setContentView(R.layout.quit_dialogue)
 
         dialog.findViewById<View>(R.id.yesbtn).setOnClickListener {
-            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick = MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
             mediaPlayerClick?.start()
 
             findNavController().popBackStack(R.id.scienceLevelFragment, false)
@@ -274,8 +298,8 @@ class ScienceGameFragment : Fragment() {
             dialog.dismiss()
         }
 
-        dialog.findViewById<View>(R.id.nobtn).setOnClickListener{
-            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+        dialog.findViewById<View>(R.id.nobtn).setOnClickListener {
+            mediaPlayerClick = MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
             mediaPlayerClick?.start()
 
             dialog.dismiss()
@@ -292,7 +316,6 @@ class ScienceGameFragment : Fragment() {
             .setDuration(500).setStartDelay(100)
             .setInterpolator(DecelerateInterpolator())
             .setListener(object : Animator.AnimatorListener {
-
                 override fun onAnimationStart(animation: Animator) {
                     if (value == 0 && count < 4) {
                         val option: String = when (count) {
@@ -321,6 +344,17 @@ class ScienceGameFragment : Fragment() {
                         }
                         view.tag = data
                         playAnimation(view, 1, data)
+                    } else if (value == 1 && view is Button) {
+                        val options = mutableListOf<Button>()
+                        for (i in 0 until binding.optContainer.childCount) {
+                            val optionButton = binding.optContainer.getChildAt(i) as Button
+                            options.add(optionButton)
+                        }
+                        options.shuffle()
+                        binding.optContainer.removeAllViews()
+                        for (optionButton in options) {
+                            binding.optContainer.addView(optionButton)
+                        }
                     }
                 }
 
@@ -328,6 +362,7 @@ class ScienceGameFragment : Fragment() {
                 override fun onAnimationRepeat(animation: Animator) {}
             })
     }
+
     private fun checkAnswer(selectedOption: Button) {
         scienceGameViewModel.stopTimer()
         view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
@@ -335,16 +370,17 @@ class ScienceGameFragment : Fragment() {
         binding.btnNext.isEnabled = true
         binding.btnNext.alpha = 1f
         if (scienceGameViewModel.checkAnswer(selectedOption.text.toString())) {
-            mediaPlayer = MediaPlayer.create(requireContext(),R.raw.correct_answer_sound_effects)
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.correct_answer_sound_effects)
             mediaPlayer?.start()
             selectedOption.setBackgroundResource(R.drawable.correct)
 
         } else {
-            mediaPlayer = MediaPlayer.create(requireContext(),R.raw.wrong_answer_sound)
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.wrong_answer_sound)
             mediaPlayer?.start()
 
             selectedOption.setBackgroundResource(R.drawable.wrong)
-            val correctOption = binding.optContainer.findViewWithTag(scienceGameViewModel.questionsList[currentPosition].correctAnswer) as Button
+            val correctOption =
+                binding.optContainer.findViewWithTag(scienceGameViewModel.questionsList[currentPosition].correctAnswer) as Button
             correctOption.setBackgroundResource(R.drawable.correct)
         }
 
@@ -354,7 +390,7 @@ class ScienceGameFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        if (gameSoundViewModel.isSoundOn.value == true){
+        if (gameSoundViewModel.isSoundOn.value == true) {
             gameSoundViewModel.mediaPlayer?.start()
         }
 

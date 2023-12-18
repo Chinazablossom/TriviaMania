@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.media.MediaPlayer
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +15,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -35,7 +35,11 @@ class MathGameFragment : Fragment() {
     private lateinit var binding: FragmentMathGameBinding
     private var count = 0
     private var currentPosition = 0
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentMathGameBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -75,57 +79,58 @@ class MathGameFragment : Fragment() {
                     mathGameViewModel.mathStageOne()
 
                 }
-            "Stage 2" -> {
-                mathGameViewModel.mathStageTwo()
-            }
 
-            "Stage 3" -> {
-                mathGameViewModel.mathStageThree()
-            }
+                "Stage 2" -> {
+                    mathGameViewModel.mathStageTwo()
+                }
 
-            "Stage 4" -> {
-                mathGameViewModel.mathStageFour()
-            }
+                "Stage 3" -> {
+                    mathGameViewModel.mathStageThree()
+                }
 
-            "Stage 5" -> {
-                mathGameViewModel.mathStageFive()
-            }
+                "Stage 4" -> {
+                    mathGameViewModel.mathStageFour()
+                }
 
-            "Stage 6" -> {
-                mathGameViewModel.mathStageSix()
-            }
+                "Stage 5" -> {
+                    mathGameViewModel.mathStageFive()
+                }
 
-            "Stage 7" -> {
-                mathGameViewModel.mathStageSeven()
-            }
+                "Stage 6" -> {
+                    mathGameViewModel.mathStageSix()
+                }
 
-            "Stage 8" -> {
-                mathGameViewModel.mathStageEight()
-            }
+                "Stage 7" -> {
+                    mathGameViewModel.mathStageSeven()
+                }
 
-            "Stage 9" -> {
-                mathGameViewModel.mathStageNine()
-            }
+                "Stage 8" -> {
+                    mathGameViewModel.mathStageEight()
+                }
 
-            "Stage 10" -> {
-                mathGameViewModel.mathStageTen()
-            }
+                "Stage 9" -> {
+                    mathGameViewModel.mathStageNine()
+                }
 
-            "Stage 11" -> {
-                mathGameViewModel.mathStageEleven()
-            }
+                "Stage 10" -> {
+                    mathGameViewModel.mathStageTen()
+                }
 
-            "Stage 12" -> {
-                mathGameViewModel.mathStageTwelve()
-            }
+                "Stage 11" -> {
+                    mathGameViewModel.mathStageEleven()
+                }
 
-            "Stage 13" -> {
-                mathGameViewModel.mathStageThirteen()
-            }
+                "Stage 12" -> {
+                    mathGameViewModel.mathStageTwelve()
+                }
 
-            "Stage 14" -> {
-                mathGameViewModel.mathStageFourteen()
-            }
+                "Stage 13" -> {
+                    mathGameViewModel.mathStageThirteen()
+                }
+
+                "Stage 14" -> {
+                    mathGameViewModel.mathStageFourteen()
+                }
 
             }
 
@@ -137,14 +142,16 @@ class MathGameFragment : Fragment() {
             playAnimation(QuestionTv, 0, mathGameViewModel.questionsList[currentPosition].question)
 
             skipBtn.setOnClickListener {
-                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick =
+                    MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
                 mediaPlayerClick?.start()
 
                 mathGameViewModel.skipQuestion()
 
                 if (savedInstanceState == null) {
                     mathGameViewModel.resetTimer()
-                    view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
+                    view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)
+                        ?.pauseAnimation()
 
                 }
 
@@ -176,12 +183,17 @@ class MathGameFragment : Fragment() {
                     return@setOnClickListener
                 }
                 count = 0
-                playAnimation(QuestionTv, 0, mathGameViewModel.questionsList[currentPosition].question)
+                playAnimation(
+                    QuestionTv,
+                    0,
+                    mathGameViewModel.questionsList[currentPosition].question
+                )
 
             }
 
             btnNext.setOnClickListener {
-                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick =
+                    MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
                 mediaPlayerClick?.start()
 
                 if (savedInstanceState == null) {
@@ -209,7 +221,8 @@ class MathGameFragment : Fragment() {
                         bundleOf(
                             "result" to mathGameViewModel.score.value,
                             "total" to mathGameViewModel.questionsList.size,
-                            "skipped" to mathGameViewModel.skipped.value                        )
+                            "skipped" to mathGameViewModel.skipped.value
+                        )
                     )
 
                     return@setOnClickListener
@@ -242,6 +255,7 @@ class MathGameFragment : Fragment() {
             }
         }
     }
+
     private fun showTimeUpDialog() {
         view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
 
@@ -252,7 +266,7 @@ class MathGameFragment : Fragment() {
         dialog.setContentView(R.layout.timeup_dialogue)
 
         dialog.findViewById<View>(R.id.tryAgainbtn).setOnClickListener {
-            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick = MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
             mediaPlayerClick?.start()
             gameSoundViewModel.setSoundOn(false)
             soundViewModel.setSoundOn(true)
@@ -261,6 +275,7 @@ class MathGameFragment : Fragment() {
         }
         dialog.show()
     }
+
     private fun showQuitDialog() {
         mathGameViewModel.stopTimer()
         view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
@@ -272,7 +287,7 @@ class MathGameFragment : Fragment() {
         dialog.setContentView(R.layout.quit_dialogue)
 
         dialog.findViewById<View>(R.id.yesbtn).setOnClickListener {
-            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick = MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
             mediaPlayerClick?.start()
             findNavController().popBackStack(R.id.mathsFragment, false)
             gameSoundViewModel.setSoundOn(false)
@@ -280,8 +295,8 @@ class MathGameFragment : Fragment() {
             dialog.dismiss()
         }
 
-        dialog.findViewById<View>(R.id.nobtn).setOnClickListener{
-            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+        dialog.findViewById<View>(R.id.nobtn).setOnClickListener {
+            mediaPlayerClick = MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
             mediaPlayerClick?.start()
             dialog.dismiss()
             mathGameViewModel.playTimer()
@@ -297,7 +312,6 @@ class MathGameFragment : Fragment() {
             .setDuration(500).setStartDelay(100)
             .setInterpolator(DecelerateInterpolator())
             .setListener(object : Animator.AnimatorListener {
-
                 override fun onAnimationStart(animation: Animator) {
                     if (value == 0 && count < 4) {
                         val option: String = when (count) {
@@ -326,6 +340,17 @@ class MathGameFragment : Fragment() {
                         }
                         view.tag = data
                         playAnimation(view, 1, data)
+                    } else if (value == 1 && view is Button) {
+                        val options = mutableListOf<Button>()
+                        for (i in 0 until binding.optContainer.childCount) {
+                            val optionButton = binding.optContainer.getChildAt(i) as Button
+                            options.add(optionButton)
+                        }
+                        options.shuffle()
+                        binding.optContainer.removeAllViews()
+                        for (optionButton in options) {
+                            binding.optContainer.addView(optionButton)
+                        }
                     }
                 }
 
@@ -333,6 +358,7 @@ class MathGameFragment : Fragment() {
                 override fun onAnimationRepeat(animation: Animator) {}
             })
     }
+
     private fun checkAnswer(selectedOption: Button) {
         mathGameViewModel.stopTimer()
         view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
@@ -340,12 +366,12 @@ class MathGameFragment : Fragment() {
         binding.btnNext.isEnabled = true
         binding.btnNext.alpha = 1f
         if (mathGameViewModel.checkAnswer(selectedOption.text.toString())) {
-            mediaPlayer = MediaPlayer.create(requireContext(),R.raw.correct_answer_sound_effects)
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.correct_answer_sound_effects)
             mediaPlayer?.start()
 
             selectedOption.setBackgroundResource(R.drawable.correct)
         } else {
-            mediaPlayer = MediaPlayer.create(requireContext(),R.raw.wrong_answer_sound)
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.wrong_answer_sound)
             mediaPlayer?.start()
 
             selectedOption.setBackgroundResource(R.drawable.wrong)
@@ -356,11 +382,10 @@ class MathGameFragment : Fragment() {
 
     }
 
-
     override fun onResume() {
         super.onResume()
 
-        if (gameSoundViewModel.isSoundOn.value == true){
+        if (gameSoundViewModel.isSoundOn.value == true) {
             gameSoundViewModel.mediaPlayer?.start()
         }
 

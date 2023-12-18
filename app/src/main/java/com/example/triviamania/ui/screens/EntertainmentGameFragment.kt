@@ -145,14 +145,16 @@ class EntertainmentGameFragment : Fragment() {
             )
 
             skipBtn.setOnClickListener {
-                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick =
+                    MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
                 mediaPlayerClick?.start()
 
                 entertainmentGameViewModel.skipQuestion()
 
                 if (savedInstanceState == null) {
                     entertainmentGameViewModel.resetTimer()
-                    view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
+                    view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)
+                        ?.pauseAnimation()
 
                 }
 
@@ -183,14 +185,19 @@ class EntertainmentGameFragment : Fragment() {
                     return@setOnClickListener
                 }
                 count = 0
-                playAnimation(QuestionTv, 0, entertainmentGameViewModel.questionsList[currentPosition].question)
+                playAnimation(
+                    QuestionTv,
+                    0,
+                    entertainmentGameViewModel.questionsList[currentPosition].question
+                )
 
             }
 
 
 
             btnNext.setOnClickListener {
-                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick =
+                    MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
                 mediaPlayerClick?.start()
 
                 if (savedInstanceState == null) {
@@ -218,7 +225,8 @@ class EntertainmentGameFragment : Fragment() {
                         bundleOf(
                             "result" to entertainmentGameViewModel.score.value,
                             "total" to entertainmentGameViewModel.questionsList.size,
-                            "skipped" to entertainmentGameViewModel.skipped.value                        )
+                            "skipped" to entertainmentGameViewModel.skipped.value
+                        )
                     )
 
                     return@setOnClickListener
@@ -262,7 +270,7 @@ class EntertainmentGameFragment : Fragment() {
         dialog.setContentView(R.layout.timeup_dialogue)
 
         dialog.findViewById<View>(R.id.tryAgainbtn).setOnClickListener {
-            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick = MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
             mediaPlayerClick?.start()
             gameSoundViewModel.setSoundOn(false)
             soundViewModel.setSoundOn(true)
@@ -284,7 +292,7 @@ class EntertainmentGameFragment : Fragment() {
         dialog.setContentView(R.layout.quit_dialogue)
 
         dialog.findViewById<View>(R.id.yesbtn).setOnClickListener {
-            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick = MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
             mediaPlayerClick?.start()
 
             findNavController().popBackStack(R.id.entertainmentFragment, false)
@@ -293,8 +301,8 @@ class EntertainmentGameFragment : Fragment() {
             dialog.dismiss()
         }
 
-        dialog.findViewById<View>(R.id.nobtn).setOnClickListener{
-            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+        dialog.findViewById<View>(R.id.nobtn).setOnClickListener {
+            mediaPlayerClick = MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
             mediaPlayerClick?.start()
 
             dialog.dismiss()
@@ -311,7 +319,6 @@ class EntertainmentGameFragment : Fragment() {
             .setDuration(500).setStartDelay(100)
             .setInterpolator(DecelerateInterpolator())
             .setListener(object : Animator.AnimatorListener {
-
                 override fun onAnimationStart(animation: Animator) {
                     if (value == 0 && count < 4) {
                         val option: String = when (count) {
@@ -340,6 +347,17 @@ class EntertainmentGameFragment : Fragment() {
                         }
                         view.tag = data
                         playAnimation(view, 1, data)
+                    } else if (value == 1 && view is Button) {
+                        val options = mutableListOf<Button>()
+                        for (i in 0 until binding.optContainer.childCount) {
+                            val optionButton = binding.optContainer.getChildAt(i) as Button
+                            options.add(optionButton)
+                        }
+                        options.shuffle()
+                        binding.optContainer.removeAllViews()
+                        for (optionButton in options) {
+                            binding.optContainer.addView(optionButton)
+                        }
                     }
                 }
 
@@ -355,12 +373,12 @@ class EntertainmentGameFragment : Fragment() {
         binding.btnNext.isEnabled = true
         binding.btnNext.alpha = 1f
         if (entertainmentGameViewModel.checkAnswer(selectedOption.text.toString())) {
-            mediaPlayer = MediaPlayer.create(requireContext(),R.raw.correct_answer_sound_effects)
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.correct_answer_sound_effects)
             mediaPlayer?.start()
 
             selectedOption.setBackgroundResource(R.drawable.correct)
         } else {
-            mediaPlayer = MediaPlayer.create(requireContext(),R.raw.wrong_answer_sound)
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.wrong_answer_sound)
             mediaPlayer?.start()
 
             selectedOption.setBackgroundResource(R.drawable.wrong)
@@ -374,7 +392,7 @@ class EntertainmentGameFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        if (gameSoundViewModel.isSoundOn.value == true){
+        if (gameSoundViewModel.isSoundOn.value == true) {
             gameSoundViewModel.mediaPlayer?.start()
         }
 

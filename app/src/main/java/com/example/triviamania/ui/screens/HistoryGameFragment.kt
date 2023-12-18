@@ -138,17 +138,23 @@ class HistoryGameFragment : Fragment() {
                     checkAnswer(it as Button)
                 }
             }
-            playAnimation(QuestionTv, 0, historyGameViewModel.questionsList[currentPosition].question)
+            playAnimation(
+                QuestionTv,
+                0,
+                historyGameViewModel.questionsList[currentPosition].question
+            )
 
             skipBtn.setOnClickListener {
-                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick =
+                    MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
                 mediaPlayerClick?.start()
 
                 historyGameViewModel.skipQuestion()
 
                 if (savedInstanceState == null) {
                     historyGameViewModel.resetTimer()
-                    view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
+                    view.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)
+                        ?.pauseAnimation()
 
                 }
 
@@ -181,12 +187,17 @@ class HistoryGameFragment : Fragment() {
                 }
 
                 count = 0
-                playAnimation(QuestionTv, 0, historyGameViewModel.questionsList[currentPosition].question)
+                playAnimation(
+                    QuestionTv,
+                    0,
+                    historyGameViewModel.questionsList[currentPosition].question
+                )
 
             }
 
             btnNext.setOnClickListener {
-                mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+                mediaPlayerClick =
+                    MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
                 mediaPlayerClick?.start()
 
                 if (savedInstanceState == null) {
@@ -214,7 +225,8 @@ class HistoryGameFragment : Fragment() {
                         bundleOf(
                             "result" to historyGameViewModel.score.value,
                             "total" to historyGameViewModel.questionsList.size,
-                            "skipped" to historyGameViewModel.skipped.value                        )
+                            "skipped" to historyGameViewModel.skipped.value
+                        )
                     )
 
                     return@setOnClickListener
@@ -258,7 +270,7 @@ class HistoryGameFragment : Fragment() {
         dialog.setContentView(R.layout.timeup_dialogue)
 
         dialog.findViewById<View>(R.id.tryAgainbtn).setOnClickListener {
-            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick = MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
             mediaPlayerClick?.start()
 
             gameSoundViewModel.setSoundOn(false)
@@ -269,6 +281,7 @@ class HistoryGameFragment : Fragment() {
         }
         dialog.show()
     }
+
     private fun showQuitDialog() {
         historyGameViewModel.stopTimer()
         view?.findViewById<LottieAnimationView>(R.id.lottieAnimationView2)?.pauseAnimation()
@@ -280,7 +293,7 @@ class HistoryGameFragment : Fragment() {
         dialog.setContentView(R.layout.quit_dialogue)
 
         dialog.findViewById<View>(R.id.yesbtn).setOnClickListener {
-            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+            mediaPlayerClick = MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
             mediaPlayerClick?.start()
 
             findNavController().popBackStack(R.id.historyFragment, false)
@@ -289,8 +302,8 @@ class HistoryGameFragment : Fragment() {
             dialog.dismiss()
         }
 
-        dialog.findViewById<View>(R.id.nobtn).setOnClickListener{
-            mediaPlayerClick = MediaPlayer.create(requireContext(),R.raw.mouse_click_sound_effect)
+        dialog.findViewById<View>(R.id.nobtn).setOnClickListener {
+            mediaPlayerClick = MediaPlayer.create(requireContext(), R.raw.mouse_click_sound_effect)
             mediaPlayerClick?.start()
 
             dialog.dismiss()
@@ -306,7 +319,6 @@ class HistoryGameFragment : Fragment() {
             .setDuration(500).setStartDelay(100)
             .setInterpolator(DecelerateInterpolator())
             .setListener(object : Animator.AnimatorListener {
-
                 override fun onAnimationStart(animation: Animator) {
                     if (value == 0 && count < 4) {
                         val option: String = when (count) {
@@ -335,6 +347,17 @@ class HistoryGameFragment : Fragment() {
                         }
                         view.tag = data
                         playAnimation(view, 1, data)
+                    } else if (value == 1 && view is Button) {
+                        val options = mutableListOf<Button>()
+                        for (i in 0 until binding.optContainer.childCount) {
+                            val optionButton = binding.optContainer.getChildAt(i) as Button
+                            options.add(optionButton)
+                        }
+                        options.shuffle()
+                        binding.optContainer.removeAllViews()
+                        for (optionButton in options) {
+                            binding.optContainer.addView(optionButton)
+                        }
                     }
                 }
 
@@ -350,12 +373,12 @@ class HistoryGameFragment : Fragment() {
         binding.btnNext.isEnabled = true
         binding.btnNext.alpha = 1f
         if (historyGameViewModel.checkAnswer(selectedOption.text.toString())) {
-            mediaPlayer = MediaPlayer.create(requireContext(),R.raw.correct_answer_sound_effects)
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.correct_answer_sound_effects)
             mediaPlayer?.start()
 
             selectedOption.setBackgroundResource(R.drawable.correct)
         } else {
-            mediaPlayer = MediaPlayer.create(requireContext(),R.raw.wrong_answer_sound)
+            mediaPlayer = MediaPlayer.create(requireContext(), R.raw.wrong_answer_sound)
             mediaPlayer?.start()
 
             selectedOption.setBackgroundResource(R.drawable.wrong)
@@ -369,7 +392,7 @@ class HistoryGameFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        if (gameSoundViewModel.isSoundOn.value == true){
+        if (gameSoundViewModel.isSoundOn.value == true) {
             gameSoundViewModel.mediaPlayer?.start()
         }
 
